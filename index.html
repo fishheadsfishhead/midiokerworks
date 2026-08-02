@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Midioker Works is a creative studio from Saudi Arabia." />
+  <title>Midioker Works</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --background: #ffeded;
+      --text: #111111;
+      --accent: #cacaca;
+      --field-background: rgba(255, 255, 255, 0.55);
+      --border: #111111;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100svh;
+      background: #adadad;
+      color: var(--text);
+      font-family: "Open Sans", sans-serif;
+      display: grid;
+      place-items: center;
+      padding: 32px 20px;
+      padding-top: 0%;
+      margin-top: -40px;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .site {
+      width: min(760px, 100%);
+      min-height: calc(100svh - 64px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(28px, 5vh, 54px);
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+      width: min(360px, 76vw);
+      /* max-height: 34vh; */
+      object-fit: contain;
+    }
+
+    .intro {
+      margin: 0;
+      max-width: 720px;
+      font-family: "Open Sans", sans-serif;
+      font-size: clamp(2.6rem, 4vw, 2.35rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .signup {
+      width: min(520px, 100%);
+    }
+
+    .signup-label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .signup-row {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .signup input {
+      min-width: 0;
+      flex: 1;
+      appearance: none;
+      border: 1px dashed var(--border);
+      background: var(--field-background);
+      color: var(--text);
+      padding: 14px 16px;
+      font: inherit;
+      outline: none;
+      border-radius: 20px;
+    }
+
+    .signup input:focus {
+      background: #ffffff;
+    }
+
+    .signup button {
+      appearance: none;
+      border: 1px dashed var(--border);
+      background: transparent;
+      color: black;
+      padding: 14px 20px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+
+    .signup button:hover,
+    .signup button:focus-visible {
+      background: var(--accent);
+      color: black;
+      border-radius: 20px;
+    }
+
+    .form-message {
+      min-height: 1.25em;
+      margin: 10px 0 0;
+      font-size: 0.9rem;
+    }
+
+    .subscription-target {
+      display: none;
+    }
+
+    .form-honeypot {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .signup button:disabled {
+      cursor: wait;
+      opacity: 0.55;
+    }
+
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      width: 100%;
+      margin-top: 32px;
+      padding: 0 20px 24px;
+      box-sizing: border-box;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #231f20;
+      text-decoration: none;
+      transition:
+        transform 180ms ease,
+        opacity 180ms ease;
+    }
+
+    .social-icon-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 58px;
+      height: 58px;
+      box-sizing: border-box;
+      border: 1.5px dashed currentColor;
+      border-radius: 17px;
+    }
+
+    .social-icon {
+      display: block;
+      width: 90%;
+      height: 90%;
+      color: black;
+    }
+
+    .social-icon--email {
+      width: 90%;
+      height: 90%;
+      color: black;
+    }
+
+    .social-icon-image {
+      display: block;
+      width: 90%;
+      height: 90%;
+      color: black;
+      object-fit: contain;
+    }
+
+    .social-icon-image--x {
+      width: 65%;
+      height: 65%;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      opacity: 0.75;
+    }
+
+    .social-link:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 5px;
+      border-radius: 19px;
+    }
+
+    @media (max-width: 600px) {
+      .site-footer {
+        gap: 14px;
+        margin-top: 24px;
+        padding-bottom: 20px;
+      }
+
+      .social-icon-frame {
+        width: 52px;
+        height: 52px;
+        border-radius: 15px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 24px 16px;
+        padding-top: 0%;
+        margin-top: -40px;
+      }
+
+      .site {
+        min-height: calc(100svh - 48px);
+        justify-content: space-evenly;
+        gap: 22px;
+      }
+
+      .signup-row {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .signup input {
+        border-radius: 20px;
+      }
+
+      .signup button {
+        width: 100%;
+        border-radius: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="site">
+    <img
+      class="logo"
+      src="assets/Midioker.gif"
+      alt="Midioker Works"
+    />
+
+    <p class="intro">
+      hello ☺︎ this is  <br />Midioker Works <br />
+      an art-led independent studio from Saudi,
+      making hand-crafted<span class="accent"> video games, animations, and other original works.</span> we're a very small studio <br />
+      and make our games with a small team of talented artists and developers from Saudi.
+    </p>
+
+    <!-- Google Sheets subscription form -->
+    <form
+      class="signup"
+      id="signup-form"
+      action="https://script.google.com/macros/s/AKfycbz0CHXdqKpHXWLCI9m7o_3JfleM0lmV2KbghcKpV6yp2OTxGAIDgQasiOpJrCDz_U0/exec"
+      method="POST"
+      target="subscription-target"
+    >
+      <div class="signup-row">
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          placeholder="Email address"
+          required
+        />
+
+        <button type="submit">Subscribe</button>
+      </div>
+
+      <!-- Hidden spam trap. Real visitors should leave this empty. -->
+      <div class="form-honeypot" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
+
+      <p
+        class="form-message"
+        id="form-message"
+        role="status"
+        aria-live="polite"
+      ></p>
+    </form>
+
+    <iframe
+      class="subscription-target"
+      name="subscription-target"
+      title="Subscription submission"
+    ></iframe>
+
+    <footer class="site-footer" aria-label="Social links">
+      <a
+        class="social-link"
+        href="https://www.instagram.com/midiokerworks/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <span class="social-icon-frame">
+          <svg
+            class="social-icon"
+            viewBox="0 0 1000 1000"
+            aria-hidden="true"
+          >
+            <rect
+              x="180"
+              y="180"
+              width="640"
+              height="640"
+              rx="170"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="70"
+            />
+
+            <circle
+              cx="500"
+              cy="500"
+              r="155"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="70"
+            />
+
+            <circle
+              cx="700"
+              cy="300"
+              r="45"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </a>
+
+      <a
+        class="social-link"
+        href="https://x.com/midiokerworks/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="X"
+      >
+        <span class="social-icon-frame">
+          <img
+            class="social-icon-image social-icon-image--x"
+            src="assets/x.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </span>
+      </a>
+
+      <a
+        class="social-link"
+        href="mailto:info@midiokerworks.com"
+        aria-label="Email"
+      >
+        <span class="social-icon-frame">
+          <svg
+            class="social-icon social-icon--email"
+            viewBox="0 0 1000 1000"
+            aria-hidden="true"
+          >
+            <rect
+              x="150"
+              y="250"
+              width="700"
+              height="500"
+              rx="80"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="70"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M195 310L500 550L805 310"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="70"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </a>
+    </footer>
+  </main>
+
+  <script>
+    const form = document.querySelector("#signup-form");
+    const message = document.querySelector("#form-message");
+    const button = form.querySelector("button");
+
+    let submissionTimeout;
+
+    form.addEventListener("submit", () => {
+      button.disabled = true;
+      button.textContent = "Sending…";
+      message.textContent = "";
+
+      clearTimeout(submissionTimeout);
+      submissionTimeout = setTimeout(() => {
+        button.disabled = false;
+        button.textContent = "Subscribe";
+        message.textContent =
+          "The submission is taking longer than expected. Please try again.";
+      }, 15000);
+    });
+
+    window.addEventListener("message", (event) => {
+      const data = event.data;
+
+      if (
+        !data ||
+        data.source !== "midioker-subscription"
+      ) {
+        return;
+      }
+
+      clearTimeout(submissionTimeout);
+
+      button.disabled = false;
+      button.textContent = "Subscribe";
+      message.textContent = data.message;
+
+      if (data.status === "success") {
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
